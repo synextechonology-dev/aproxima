@@ -27,10 +27,20 @@ export type Indicadores = {
 export function useIndicadores(inicio: string, fim: string, vendedor: string, cidade: string) {
   return useQuery({
     queryKey: ['painel', 'indicadores', inicio, fim, vendedor, cidade],
-    queryFn: async () =>
-      exigir(
+    queryFn: async () => {
+      const r = exigir(
         await supabase.rpc('painel_indicadores', { p_inicio: inicio, p_fim: fim, p_vendedor: vendedor || undefined, p_cidade: cidade || undefined }),
-      ) as unknown as Indicadores,
+      ) as unknown as Partial<Indicadores>;
+      // Listas sempre como array, mesmo se vierem vazias
+      return {
+        ...r,
+        servicos: r.servicos ?? [],
+        funil: r.funil ?? [],
+        vendas_por_cidade: r.vendas_por_cidade ?? [],
+        motivos_descarte: r.motivos_descarte ?? [],
+        por_mes: r.por_mes ?? [],
+      } as Indicadores;
+    },
   });
 }
 

@@ -62,7 +62,7 @@ function FormLogin() {
     }
   });
   return (
-    <Moldura titulo="Entrar" texto="Use o e-mail do convite que você recebeu.">
+    <Moldura titulo="Entrar" texto="Entre com o e-mail e a senha da sua conta no Supabase.">
       {configuracaoAusente ? (
         <ErroForm msg="Faltam VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY no .env." />
       ) : null}

@@ -6,6 +6,7 @@ import { useAuth } from './auth-contexto';
 import { NAV_CELULAR, NAV_CONFIG, NAV_MAIS, NAV_PRINCIPAL, type ItemNav } from './navegacao';
 import { BuscaGlobal } from './BuscaGlobal';
 import { AlternarTema } from '@/components/AlternarTema';
+import { LimiteDeErro } from '@/components/LimiteDeErro';
 import { Lateral } from '@/components/ui/dialogo';
 import { supabase } from '@/lib/supabase';
 import { cn } from '@/lib/utils';
@@ -195,7 +196,9 @@ export function Casca() {
           </button>
         </div>
         <main className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col gap-6 px-4 pt-4 pb-[calc(var(--tabbar-height)+32px)] md:px-8 md:pt-8 md:pb-12">
-          <Outlet />
+          <LimiteDeErro chave={local.pathname}>
+            <Outlet />
+          </LimiteDeErro>
         </main>
       </div>
       <BarraInferior abrirMais={() => setMais(true)} maisAtivo={maisAtivo} />

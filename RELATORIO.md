@@ -2,6 +2,11 @@
 
 Data: 05/10/2026 · Repositório: `synextechonology-dev/aproxima` (app na raiz)
 
+> **Atenção (temporário):** a verificação em duas etapas (código TOTP) está **desligada** para os primeiros testes
+> (`EXIGIR_MFA = false` em `src/app/seguranca.ts`). O login pede só e-mail e senha; os dados continuam protegidos
+> pelo banco (só quem está em `membros` acessa). **Antes de publicar para uso real, mude para `true`**, faça o build
+> de novo e habilite o TOTP em Supabase → Authentication → Multi-Factor.
+
 ## Como rodar localmente
 
 ```bash
@@ -12,7 +17,7 @@ npm run dev          # abre em http://localhost:5173
 O `.env` já tem `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`. Para entrar, a conta precisa:
 1. ter sido convidada pelo painel do Supabase;
 2. estar em `public.membros` (SQL do `SETUP.md`);
-3. ter TOTP ativado. Se ainda não tiver, o app mostra o QR code no primeiro login.
+3. ter TOTP ativado, quando `EXIGIR_MFA` estiver ligado (hoje está desligado). Com ele ligado, o app mostra o QR code no primeiro login.
 
 Outros comandos: `npm run typecheck`, `npm run lint`, `npm run build`, `npm run preview` (serve o `dist/`),
 `npm run test:placa` (o mesmo que `node --experimental-strip-types tests/rota-placa.test.ts`).

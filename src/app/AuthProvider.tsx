@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase';
 import { mensagemDeErro } from '@/lib/erros';
 import type { Membro } from '@/lib/tipos';
 import { AuthContexto, type EstadoAuth } from './auth-contexto';
+import { EXIGIR_MFA } from './seguranca';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const qc = useQueryClient();
@@ -24,15 +25,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     try {
-      // Verificação em duas etapas (TOTP): exige nível aal2.
-      const nivel = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
-      if (nivel.error) throw nivel.error;
-      if (!valer()) return;
-      const { currentLevel, nextLevel } = nivel.data;
-      if (currentLevel !== 'aal2') {
-        setMembro(null);
-        setEstado(nextLevel === 'aal2' ? 'mfa' : 'mfa-cadastro');
-        return;
+      // Verificação em duas etapas (TOTP): exige nível aal2 (desligada por enquanto: ver seguranca.ts).
+      if (EXIGIR_MFA) {
+        const nivel = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+        if (nivel.error) throw nivel.error;
+        if (!valer()) return;
+        const { currentLevel, nextLevel } = nivel.data;
+        if (currentLevel !== 'aal2') {
+          setMembro(null);
+          setEstado(nextLevel === 'aal2' ? 'mfa' : 'mfa-cadastro');
+          return;
+        }
       }
       // Logou, mas precisa estar em `membros` (RLS devolve vazio para quem não é sócio).
       const { data, error } = await supabase.from('membros').select('*').eq('user_id', s.user.id).eq('ativo', true).maybeSingle();
