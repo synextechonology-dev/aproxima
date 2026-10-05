@@ -52,9 +52,10 @@ export function mensagemDeErro(e: unknown): string {
 }
 
 /** Lança o erro do Supabase (para o TanStack Query tratar) e devolve os dados. */
-export function exigir<T>(r: { data: T; error: PostgrestError | null }): T {
+export function exigir<T>(r: { data: T; error: PostgrestError | null }): NonNullable<T> {
   if (r.error) throw r.error;
-  return r.data;
+  if (r.data === null || r.data === undefined) throw new Error('Registro não encontrado');
+  return r.data as NonNullable<T>;
 }
 
 /** Busca todas as linhas, de 1000 em 1000 (o limite padrão de linhas da API). */

@@ -8,6 +8,7 @@ import { estiloBotao } from '@/components/ui/botao-estilo';
 
 const PaginaLogin = lazy(() => import('@/features/login/PaginaLogin'));
 const EmConstrucao = lazy(() => import('./EmConstrucao'));
+const PaginaProspeccao = lazy(() => import('@/features/prospeccao/PaginaProspeccao'));
 
 function Protegido({ children }: { children: ReactNode }) {
   const { estado } = useAuth();
@@ -54,7 +55,7 @@ export function App() {
             }
           >
             <Route index element={<EmConstrucao area="Painel" />} />
-            <Route path="prospeccao" element={<EmConstrucao area="Prospecção" />} />
+            <Route path="prospeccao" element={<PaginaProspeccao />} />
             <Route path="vendas/*" element={<EmConstrucao area="Vendas" />} />
             <Route path="projetos/*" element={<EmConstrucao area="Projetos" />} />
             <Route path="estoque" element={<EmConstrucao area="Estoque" />} />
