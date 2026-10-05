@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/styles.css">
+<script src="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/_ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>html{background:var(--color-neutral-900)}body{margin:0;background:var(--color-neutral-900);font-variant-numeric:tabular-nums}a{color:var(--color-accent-300)}a:hover{color:var(--color-accent-200)}</style>
+</helmet>
+<section style="padding:48px 56px 96px;display:flex;flex-direction:column;gap:32px">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap">
+      <h2 style="margin:0;font-size:28px">Projeto</h2>
+      <span style="color:var(--color-neutral-400);font-size:14px">o bloco Resultado é o argumento de upsell: o antes e depois do Google do cliente</span>
+    </div>
+    <nav style="display:flex;gap:16px;font-size:13px;flex-wrap:wrap"><a href="Painel.dc.html">Painel</a><a href="Prospeccao.dc.html">Prospecção</a><a href="Vendas.dc.html">Vendas</a><a href="Nova venda.dc.html">Nova venda</a><a href="Projetos.dc.html">Projetos</a><a href="Projeto.dc.html" style="color:var(--color-text)">Projeto</a><a href="Estoque.dc.html">Estoque</a><a href="Financeiro.dc.html">Financeiro</a><a href="Tema claro.dc.html">Tema claro</a></nav>
+  </header>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
+    <div id="4a" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--color-accent);color:var(--color-accent)">4a</span><span style="font-size:14px;color:var(--color-neutral-300)">Desktop</span></div>
+      <div style="width:1440px;height:900px;border-radius:14px;overflow:hidden;display:flex;background:var(--color-bg);box-shadow:var(--shadow-md)">
+        <dc-import name="Sidebar" active="Projetos" hint-size="232px,900px"></dc-import>
+        <main style="flex:1;min-width:0;display:flex;flex-direction:column;padding:24px 32px;gap:20px">
+          <div style="display:flex;align-items:flex-end;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:4px;margin-right:auto">
+              <span style="font-size:13px;color:var(--color-neutral-500)">Projetos / V-0003 · vendido em 12/06/2026 por João</span>
+              <h1 style="margin:0;font-size:26px">Padaria Pão Nosso</h1>
+            </div>
+            <div class="seg">
+              <sc-for list="{{ statuses }}" as="s" hint-placeholder-count="4">
+                <span class="seg-opt" style="color:{{ s.color }};box-shadow:{{ s.ring }}"><i class="ph {{ s.icon }}"></i>{{ s.label }}</span>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="position:relative;display:grid;grid-template-columns:330px minmax(0,1fr) 250px;gap:32px;padding:22px 26px;border-radius:14px;background:var(--color-surface);box-shadow:0 0 0 1px oklch(0.86 0.15 88 / 0.45), 0 0 48px oklch(0.86 0.15 88 / 0.12)">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:oklch(0.86 0.15 88)"><i class="ph-fill ph-star"></i>Resultado no Google</div>
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:72px;line-height:1;font-weight:500;letter-spacing:-0.04em;color:oklch(0.88 0.15 88)">+54</span><span style="font-size:16px;color:var(--color-neutral-300);line-height:1.3">avaliações<br>em 90 dias</span></div>
+              <div style="font-size:14px;line-height:1.5;color:var(--color-neutral-300);text-wrap:pretty">De 23 para 77 avaliações, e a nota subiu de <b style="font-weight:500;color:var(--color-text)">4,2</b> para <b style="font-weight:500;color:oklch(0.88 0.15 88)">4,6</b>. Antes da placa entravam 1,9 avaliações por mês; agora entram 18.</div>
+              <div style="display:flex;gap:8px;margin-top:auto">
+                <button class="btn btn-primary" style="background:var(--color-accent);border-color:var(--color-accent);color:var(--color-bg)" style-hover="background:var(--color-accent-400);border-color:var(--color-accent-400)"><i class="ph ph-whatsapp-logo"></i>Enviar resultado ao cliente</button>
+                <button class="btn btn-secondary btn-icon"><i class="ph ph-download-simple"></i></button>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end;padding-left:28px;border-left:1px solid var(--color-divider)">
+              <sc-for list="{{ checkpoints }}" as="p" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:8px;align-items:stretch">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:22px;font-weight:500;color:{{ p.numColor }}">{{ p.reviews }}</span><span style="font-size:12px;color:var(--color-neutral-400)">{{ p.delta }}</span></div>
+                  <div style="height:{{ p.h }};border-radius:6px 6px 2px 2px;background:{{ p.bar }};box-shadow:{{ p.glow }}"></div>
+                  <div style="display:flex;align-items:center;gap:4px;font-size:14px;color:{{ p.numColor }}"><i class="ph-fill ph-star" style="font-size:12px"></i>{{ p.rating }}</div>
+                  <div style="display:flex;flex-direction:column;line-height:1.3"><span style="font-size:13px">{{ p.label }}</span><span style="font-size:12px;color:var(--color-neutral-500)">{{ p.date }}</span></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px;padding-left:28px;border-left:1px solid var(--color-divider)">
+              <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)">
+                <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-neutral-400)"><i class="ph ph-hand-tap" style="font-size:14px;color:var(--color-accent-300)"></i>Toques na placa em 90 dias</span>
+                <span style="font-size:36px;line-height:1;font-weight:500;letter-spacing:-0.03em">312</span>
+                <span style="font-size:12px;color:var(--color-neutral-400);line-height:1.4">17% viraram avaliação · contados pelo link aproxima.app/p/AP-0017</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--color-neutral-400)">Avaliações por mês</span><span style="font-size:15px">1,9 <i class="ph ph-arrow-right" style="font-size:12px;color:var(--color-neutral-500)"></i> <span style="color:oklch(0.88 0.15 88)">18,0</span></span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--color-neutral-400)">Total de avaliações</span><span style="font-size:15px">3,3× o do dia da venda</span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:var(--color-neutral-400)">Concorrente mais perto</span><span style="font-size:15px">Padaria Trigo de Ouro · 4,3 · 61</span></div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:24px;min-height:0">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--color-neutral-400)">Checklist</span><span style="color:var(--color-neutral-500)">9 de 9 feitos</span></div>
+              <sc-for list="{{ checklist }}" as="g" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
+                  <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500"><i class="ph {{ g.icon }}" style="color:var(--color-accent-300)"></i>{{ g.name }}<span style="margin-left:auto;font-size:12px;font-weight:400;color:var(--color-neutral-500)">{{ g.meta }}</span></div>
+                  <sc-for list="{{ g.tasks }}" as="t" hint-placeholder-count="3">
+                    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-neutral-300)"><i class="ph-fill ph-check-square" style="color:var(--color-accent);font-size:16px"></i><span style="flex:1">{{ t.label }}</span><span style="font-size:12px;color:var(--color-neutral-500)">{{ t.date }}</span></div>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--color-neutral-400)">Pendências do cliente</span><span style="color:var(--color-neutral-500)">1 aberta</span></div>
+              <div style="display:flex;flex-direction:column;padding:4px 14px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
+                <sc-for list="{{ pendencias }}" as="p" hint-placeholder-count="3">
+                  <div style="display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px solid var(--color-divider)">
+                    <div style="display:flex;align-items:center;gap:8px;font-size:13px"><i class="ph {{ p.icon }}" style="font-size:16px;color:{{ p.iconColor }}"></i><span style="flex:1">{{ p.label }}</span></div>
+                    <span style="font-size:12px;padding-left:24px;color:{{ p.metaColor }}">{{ p.meta }}</span>
+                  </div>
+                </sc-for>
+                <button class="btn btn-ghost" style="align-self:flex-start;margin:8px 0"><i class="ph ph-whatsapp-logo"></i>Cobrar pendência</button>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--color-neutral-400)">Upsell · site</span><span style="color:var(--color-neutral-500)">R$ 1.500,00</span></div>
+              <div style="display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
+                <div style="display:flex;align-items:center;gap:8px"><span class="tag tag-accent">Em negociação</span><span style="font-size:12px;color:var(--color-neutral-500)">desde 15/09/2026</span></div>
+                <div style="display:flex;flex-direction:column;gap:0">
+                  <sc-for list="{{ upsell }}" as="u" hint-placeholder-count="4">
+                    <div style="display:grid;grid-template-columns:16px 1fr auto;gap:10px;align-items:center;height:30px;font-size:13px;color:{{ u.color }}"><span style="width:10px;height:10px;border-radius:50%;justify-self:center;background:{{ u.dot }};box-shadow:{{ u.ring }}"></span><span>{{ u.label }}</span><span style="font-size:12px;color:var(--color-neutral-500)">{{ u.date }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="font-size:13px;line-height:1.45;color:var(--color-neutral-300)">Retorno combinado para 06/10/2026. Levar o resultado de 90 dias impresso.</div>
+                <button class="btn btn-primary" style="background:var(--color-accent);border-color:var(--color-accent);color:var(--color-bg)" style-hover="background:var(--color-accent-400);border-color:var(--color-accent-400)"><i class="ph ph-receipt"></i>Registrar venda do site</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="4b" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--color-accent);color:var(--color-accent)">4b</span><span style="font-size:14px;color:var(--color-neutral-300)">Celular</span></div>
+      <div style="width:390px;height:844px;border-radius:44px;background:var(--color-bg);box-shadow:var(--shadow-md);position:relative;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:46px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font-size:14px;font-weight:600"><span>9:41</span><span style="display:flex;gap:5px"><i class="ph-fill ph-cell-signal-full"></i><i class="ph-fill ph-wifi-high"></i><i class="ph-fill ph-battery-full"></i></span></div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding:4px 16px 0;overflow:hidden">
+          <div style="display:flex;align-items:center;height:40px"><span style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--color-accent)"><i class="ph ph-caret-left" style="font-size:18px"></i>Projetos</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><h2 style="margin:0;font-size:24px">Padaria Pão Nosso</h2><div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;padding:3px 10px;border-radius:6px;background:oklch(0.3 0.045 160);color:oklch(0.86 0.07 160)">Entregue</span><span style="font-size:12px;color:var(--color-neutral-500)">V-0003 · vendido em 12/06/2026</span></div></div>
+          <div style="display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:14px;background:var(--color-surface);box-shadow:0 0 0 1px oklch(0.86 0.15 88 / 0.45), 0 0 36px oklch(0.86 0.15 88 / 0.12)">
+            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:oklch(0.86 0.15 88)"><i class="ph-fill ph-star"></i>Resultado no Google</div>
+            <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:56px;line-height:1;font-weight:500;letter-spacing:-0.04em;color:oklch(0.88 0.15 88)">+54</span><span style="font-size:14px;color:var(--color-neutral-300);line-height:1.3">avaliações em 90 dias<br>nota 4,2 → <span style="color:oklch(0.88 0.15 88)">4,6</span></span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;background:var(--color-neutral-900);font-size:13px"><i class="ph ph-hand-tap" style="font-size:18px;color:var(--color-accent-300)"></i><span style="flex:1"><b style="font-weight:500;font-size:15px">312</b> toques na placa em 90 dias</span><span style="font-size:12px;color:var(--color-neutral-400)">17% avaliaram</span></div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end;height:150px">
+              <sc-for list="{{ checkpointsM }}" as="p" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:5px">
+                  <span style="font-size:15px;font-weight:500;color:{{ p.numColor }}">{{ p.reviews }}</span>
+                  <div style="height:{{ p.h }};border-radius:5px 5px 2px 2px;background:{{ p.bar }};box-shadow:{{ p.glow }}"></div>
+                  <span style="font-size:11px;color:var(--color-neutral-400)">{{ p.short }} · ★{{ p.rating }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:var(--color-surface)">
+            <i class="ph ph-browser" style="font-size:22px;color:var(--color-accent-300)"></i>
+            <div style="flex:1"><div style="font-size:14px">Upsell de site · R$ 1.500,00</div><div style="font-size:12px;color:var(--color-neutral-500)">Em negociação · retorno em 06/10/2026</div></div>
+            <i class="ph ph-caret-right" style="color:var(--color-neutral-500)"></i>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:var(--color-surface)">
+            <i class="ph ph-check-square" style="font-size:22px;color:var(--color-accent-300)"></i>
+            <div style="flex:1"><div style="font-size:14px">Checklist</div><div style="font-size:12px;color:var(--color-neutral-500)">Placa 4/4 · Otimização 5/5</div></div>
+            <i class="ph ph-caret-right" style="color:var(--color-neutral-500)"></i>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:var(--color-surface)">
+            <i class="ph ph-hourglass-medium" style="font-size:22px;color:oklch(0.87 0.07 60)"></i>
+            <div style="flex:1"><div style="font-size:14px">1 pendência do cliente</div><div style="font-size:12px;color:var(--color-neutral-500)">Fotos novas do balcão · desde 20/09/2026</div></div>
+            <i class="ph ph-caret-right" style="color:var(--color-neutral-500)"></i>
+          </div>
+        </div>
+        <div style="padding:10px 16px;flex:none;border-top:1px solid var(--color-divider)"><button class="btn btn-primary" style="background:var(--color-accent);border-color:var(--color-accent);color:var(--color-bg);width:100%;height:50px;font-size:15px" style-hover="background:var(--color-accent-400);border-color:var(--color-accent-400)"><i class="ph ph-whatsapp-logo"></i>Enviar resultado ao cliente</button></div>
+        <dc-import name="TabBar" active="Projetos" hint-size="390px,82px"></dc-import>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const Y = 'oklch(0.86 0.15 88)';
+    const pts = [
+      ['Dia da venda', 'Venda', '12/06/2026', 23, '4,2', ''],
+      ['30 dias', '30d', '12/07/2026', 41, '4,4', '+18'],
+      ['60 dias', '60d', '11/08/2026', 58, '4,5', '+35'],
+      ['90 dias', '90d', '10/09/2026', 77, '4,6', '+54']
+    ];
+    const mk = (max) => pts.map(([label, short, date, reviews, rating, delta], i) => ({
+      label, short, date, reviews, rating, delta,
+      h: Math.round(reviews / 77 * max) + 'px',
+      bar: i === 0 ? 'var(--color-neutral-700)' : `oklch(0.86 0.15 88 / ${0.35 + i * 0.22})`,
+      glow: i === 3 ? '0 0 24px oklch(0.86 0.15 88 / 0.35)' : 'none',
+      numColor: i === 0 ? 'var(--color-neutral-300)' : Y
+    }));
+    const st = ['A entregar', 'Em andamento', 'Aguardando cliente', 'Entregue'];
+    const icons = ['ph-circle-dashed', 'ph-circle-half', 'ph-hourglass-medium', 'ph-check-circle'];
+    const up = [['Oferecido na revisão de 90 dias', '10/09/2026', 'done'], ['Proposta enviada', '15/09/2026', 'done'], ['Em negociação', 'agora', 'now'], ['Site vendido', '', 'next']];
+    return {
+      statuses: st.map((label, i) => ({ label, icon: icons[i], color: i === 3 ? 'oklch(0.86 0.07 160)' : 'var(--color-neutral-400)', ring: i === 3 ? 'inset 0 0 0 1px oklch(0.75 0.09 160)' : 'none' })),
+      checkpoints: mk(180),
+      checkpointsM: mk(80),
+      checklist: [
+        { icon: 'ph-contactless-payment', name: 'Placa NFC × 1', meta: 'AP-0017', tasks: [
+          { label: 'Gravar link de avaliação', date: '13/06' }, { label: 'Testar leitura em Android e iPhone', date: '13/06' },
+          { label: 'Instalar no balcão do caixa', date: '14/06' }, { label: 'Orientar atendentes a oferecer', date: '14/06' }] },
+        { icon: 'ph-google-logo', name: 'Otimização do Google', meta: '5 de 5', tasks: [
+          { label: 'Corrigir categoria, horários e telefone', date: '15/06' }, { label: 'Subir 15 fotos novas', date: '18/06' },
+          { label: 'Responder as 23 avaliações antigas', date: '19/06' }, { label: 'Publicar 4 posts', date: '30/06' }, { label: 'Revisão de 90 dias', date: '10/09' }] }
+      ],
+      pendencias: [
+        { icon: 'ph-hourglass-medium', iconColor: 'oklch(0.87 0.07 60)', label: 'Enviar fotos novas do balcão e da vitrine', meta: 'pedido em 20/09/2026 · 14 dias', metaColor: 'oklch(0.87 0.07 60)' },
+        { icon: 'ph-check-circle', iconColor: 'var(--color-neutral-500)', label: 'Aprovar textos da descrição do perfil', meta: 'resolvido em 17/06/2026', metaColor: 'var(--color-neutral-500)' },
+        { icon: 'ph-check-circle', iconColor: 'var(--color-neutral-500)', label: 'Enviar logo em alta resolução', meta: 'resolvido em 15/06/2026', metaColor: 'var(--color-neutral-500)' }
+      ],
+      upsell: up.map(([label, date, s]) => ({ label, date,
+        color: s === 'next' ? 'var(--color-neutral-500)' : 'var(--color-text)',
+        dot: s === 'done' ? 'var(--color-accent-600)' : s === 'now' ? 'var(--color-accent)' : 'transparent',
+        ring: s === 'now' ? '0 0 0 3px var(--color-accent-800)' : s === 'next' ? 'inset 0 0 0 1.5px var(--color-neutral-700)' : 'none' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

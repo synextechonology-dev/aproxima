@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/styles.css">
+<script src="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/_ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</helmet>
+<aside style="width:232px;height:100%;display:flex;flex-direction:column;gap:18px;padding:20px 14px 16px;border-right:1px solid var(--color-divider);background:var(--color-bg);box-sizing:border-box;flex:none">
+  <div style="display:flex;align-items:center;gap:10px;padding:0 6px">
+    <div style="width:30px;height:30px;border-radius:8px;border:1px solid var(--color-accent);display:grid;place-items:center;color:var(--color-accent);box-shadow:0 0 16px color-mix(in srgb, var(--color-accent) 35%, transparent)"><i class="ph ph-contactless-payment" style="font-size:18px"></i></div>
+    <span style="font-size:17px;font-weight:500;letter-spacing:-0.01em">Aproxima</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:1px solid var(--color-divider);border-radius:8px;color:var(--color-neutral-500);font-size:13px">
+    <i class="ph ph-magnifying-glass" style="font-size:16px"></i>
+    <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nome, telefone ou código</span>
+    <span style="font-size:11px;padding:1px 6px;border-radius:4px;background:var(--color-neutral-900);color:var(--color-neutral-400)">⌘K</span>
+  </div>
+  <nav style="display:flex;flex-direction:column;gap:2px">
+    <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+      <a href="{{ item.href }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:14px;color:{{ item.color }};background:{{ item.bg }};box-shadow:{{ item.shadow }}">
+        <i class="ph {{ item.icon }}" style="font-size:18px"></i>
+        <span style="flex:1">{{ item.label }}</span>
+        <sc-if value="{{ item.badge }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;min-width:20px;text-align:center;padding:1px 6px;border-radius:10px;background:var(--color-accent-800);color:var(--color-accent-100)">{{ item.badge }}</span></sc-if>
+      </a>
+    </sc-for>
+  </nav>
+  <div style="flex:1"></div>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 6px 0;border-top:1px solid var(--color-divider)">
+    <div style="width:32px;height:32px;border-radius:50%;background:var(--color-accent-800);color:var(--color-accent-100);display:grid;place-items:center;font-size:12px;font-weight:500">J</div>
+    <div style="flex:1;line-height:1.25">
+      <div style="font-size:13px">João</div>
+      <div style="font-size:12px;color:var(--color-neutral-500)">sócio</div>
+    </div>
+    <i class="ph ph-sign-out" style="font-size:16px;color:var(--color-neutral-500)"></i>
+  </div>
+</aside>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:232,&quot;height&quot;:800},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Painel&quot;,&quot;Prospecção&quot;,&quot;Vendas&quot;,&quot;Projetos&quot;,&quot;Estoque&quot;,&quot;Financeiro&quot;],&quot;default&quot;:&quot;Painel&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active ?? 'Painel';
+    const list = [
+      ['Painel', 'ph-squares-four', 'Painel.dc.html', 5],
+      ['Prospecção', 'ph-kanban', 'Prospeccao.dc.html'],
+      ['Vendas', 'ph-receipt', 'Vendas.dc.html'],
+      ['Projetos', 'ph-folder-simple', 'Projetos.dc.html'],
+      ['Estoque', 'ph-package', 'Estoque.dc.html'],
+      ['Financeiro', 'ph-wallet', 'Financeiro.dc.html']
+    ];
+    return {
+      items: list.map(([label, icon, href, badge]) => {
+        const on = label === a;
+        return { label, icon, href, badge: badge || null,
+          color: on ? 'var(--color-text)' : 'var(--color-neutral-400)',
+          bg: on ? 'var(--color-surface)' : 'transparent',
+          shadow: on ? 'var(--shadow-sm)' : 'none' };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

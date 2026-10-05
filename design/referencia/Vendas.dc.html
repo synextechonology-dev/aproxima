@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/styles.css">
+<script src="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/_ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>html{background:var(--color-neutral-900)}body{margin:0;background:var(--color-neutral-900);font-variant-numeric:tabular-nums}a{color:var(--color-accent-300)}a:hover{color:var(--color-accent-200)}</style>
+</helmet>
+<section style="padding:48px 56px 96px;display:flex;flex-direction:column;gap:32px">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap">
+      <h2 style="margin:0;font-size:28px">Vendas</h2>
+      <span style="color:var(--color-neutral-400);font-size:14px">lista com filtros; no celular, cartões com os campos principais</span>
+    </div>
+    <nav style="display:flex;gap:16px;font-size:13px;flex-wrap:wrap"><a href="Painel.dc.html">Painel</a><a href="Prospeccao.dc.html">Prospecção</a><a href="Vendas.dc.html" style="color:var(--color-text)">Vendas</a><a href="Nova venda.dc.html">Nova venda</a><a href="Projetos.dc.html">Projetos</a><a href="Projeto.dc.html">Projeto</a><a href="Estoque.dc.html">Estoque</a><a href="Financeiro.dc.html">Financeiro</a><a href="Tema claro.dc.html">Tema claro</a></nav>
+  </header>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
+    <div id="8a" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--color-accent);color:var(--color-accent)">8a</span><span style="font-size:14px;color:var(--color-neutral-300)">Desktop</span></div>
+      <div style="width:1440px;height:900px;border-radius:14px;overflow:hidden;display:flex;background:var(--color-bg);box-shadow:var(--shadow-md)">
+        <dc-import name="Sidebar" active="Vendas" hint-size="232px,900px"></dc-import>
+        <main style="flex:1;min-width:0;display:flex;flex-direction:column;padding:26px 32px;gap:18px">
+          <div style="display:flex;align-items:flex-end;gap:12px">
+            <div style="display:flex;flex-direction:column;gap:2px;margin-right:auto"><h1 style="margin:0;font-size:26px">Vendas</h1><span style="font-size:13px;color:var(--color-neutral-500)">9 confirmadas · R$ 5.339,30 · lucro R$ 4.632,65 · 1 rascunho</span></div>
+            <button class="btn btn-secondary"><i class="ph ph-download-simple"></i>Exportar CSV</button>
+            <a href="Nova venda.dc.html" class="btn btn-primary" style="background:var(--color-accent);border-color:var(--color-accent);color:var(--color-bg)" style-hover="background:var(--color-accent-400);border-color:var(--color-accent-400)"><i class="ph ph-plus"></i>Nova venda</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-secondary"><i class="ph ph-calendar-blank"></i>01/09/2026 a 04/10/2026<i class="ph ph-caret-down"></i></button>
+            <button class="btn btn-secondary"><i class="ph ph-map-pin"></i>Todas as cidades<i class="ph ph-caret-down"></i></button>
+            <button class="btn btn-secondary"><i class="ph ph-user"></i>João e Nathan<i class="ph ph-caret-down"></i></button>
+            <div class="seg"><label class="seg-opt"><input type="radio" name="sv" checked="">Todas</label><label class="seg-opt"><input type="radio" name="sv">Com serviço</label><label class="seg-opt"><input type="radio" name="sv">Só placas</label></div>
+            <div style="display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;width:240px;margin-left:auto;border:1px solid var(--color-divider);border-radius:8px;color:var(--color-neutral-500);font-size:13px"><i class="ph ph-magnifying-glass"></i>Cliente ou nº da venda</div>
+          </div>
+          <table class="table" style="font-size:13px">
+            <thead><tr>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;width:70px">Nº</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;width:92px">Data</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px">Cliente</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px">Cidade</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px">Itens</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;text-align:right">Total</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;text-align:right">Lucro</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;text-align:right;width:70px">Margem</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;width:110px;padding-left:20px">Pagamento</th>
+              <th style="text-transform:none;letter-spacing:0;font-size:12px;width:110px">Status</th>
+            </tr></thead>
+            <tbody>
+              <sc-for list="{{ sales }}" as="s" hint-placeholder-count="11">
+                <tr style="opacity:{{ s.op }}">
+                  <td style="padding:9px 6px;font-weight:500">{{ s.code }}</td>
+                  <td style="color:var(--color-neutral-400)">{{ s.date }}</td>
+                  <td><div style="display:flex;flex-direction:column;line-height:1.3"><span>{{ s.client }}</span><span style="font-size:12px;color:var(--color-neutral-500)">{{ s.seller }}</span></div></td>
+                  <td style="color:var(--color-neutral-300)">{{ s.city }}</td>
+                  <td style="color:var(--color-neutral-300)">{{ s.items }}</td>
+                  <td style="text-align:right;text-decoration:{{ s.strike }}">{{ s.total }}</td>
+                  <td style="text-align:right">{{ s.profit }}</td>
+                  <td style="text-align:right;color:var(--color-neutral-300)">{{ s.margin }}</td>
+                  <td style="padding-left:20px"><span style="font-size:12px;padding:2px 8px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;background:{{ s.payBg }};color:{{ s.payFg }}"><i class="ph {{ s.payIcon }}"></i>{{ s.pay }}</span></td>
+                  <td><span style="font-size:12px;padding:2px 8px;border-radius:6px;display:inline-flex;background:{{ s.stBg }};color:{{ s.stFg }};box-shadow:{{ s.stRing }}">{{ s.status }}</span></td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+
+    <div id="8b" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--color-accent);color:var(--color-accent)">8b</span><span style="font-size:14px;color:var(--color-neutral-300)">Celular</span></div>
+      <div style="width:390px;height:844px;border-radius:44px;background:var(--color-bg);box-shadow:var(--shadow-md);position:relative;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:46px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font-size:14px;font-weight:600"><span>9:41</span><span style="display:flex;gap:5px"><i class="ph-fill ph-cell-signal-full"></i><i class="ph-fill ph-wifi-high"></i><i class="ph-fill ph-battery-full"></i></span></div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;padding:6px 16px 0;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between"><h1 style="margin:0;font-size:24px">Vendas</h1><span style="font-size:13px;color:var(--color-neutral-500)">R$ 5.339,30</span></div>
+          <div style="display:flex;gap:6px;overflow:hidden;margin-right:-16px">
+            <span style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:18px;font-size:13px;border:1px solid var(--color-accent);color:var(--color-accent)"><i class="ph ph-calendar-blank"></i>Setembro</span>
+            <span style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:18px;font-size:13px;border:1px solid var(--color-divider)">Cidade<i class="ph ph-caret-down"></i></span>
+            <span style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:18px;font-size:13px;border:1px solid var(--color-divider)">Vendedor<i class="ph ph-caret-down"></i></span>
+            <span style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:18px;font-size:13px;border:1px solid var(--color-divider)">Com serviço</span>
+          </div>
+          <sc-for list="{{ salesM }}" as="s" hint-placeholder-count="5">
+            <div style="display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:10px;background:var(--color-surface);box-shadow:var(--shadow-sm);opacity:{{ s.op }}">
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--color-neutral-500)"><span>{{ s.code }} · {{ s.date }}</span><span style="margin-left:auto;font-size:12px;padding:1px 8px;border-radius:6px;background:{{ s.stBg }};color:{{ s.stFg }};box-shadow:{{ s.stRing }}">{{ s.status }}</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:500;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.client }}</span><span style="font-size:15px;flex:none;text-decoration:{{ s.strike }}">{{ s.total }}</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px"><span style="color:var(--color-neutral-400);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.items }} · {{ s.cityShort }}</span><span style="flex:none;display:flex;align-items:center;gap:6px"><span style="color:var(--color-neutral-400)">lucro {{ s.profit }}</span><span style="padding:1px 8px;border-radius:6px;background:{{ s.payBg }};color:{{ s.payFg }}">{{ s.pay }}</span></span></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:10px 16px;flex:none"><button class="btn btn-primary" style="background:var(--color-accent);border-color:var(--color-accent);color:var(--color-bg);width:100%;height:48px;font-size:15px" style-hover="background:var(--color-accent-400);border-color:var(--color-accent-400)"><i class="ph ph-plus"></i>Nova venda</button></div>
+        <dc-import name="TabBar" active="Vendas" hint-size="390px,82px"></dc-import>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      pago: ['oklch(0.3 0.045 160)', 'oklch(0.86 0.07 160)', 'ph-check-circle'],
+      parcial: ['oklch(0.31 0.05 60)', 'oklch(0.87 0.07 60)', 'ph-circle-half'],
+      pendente: ['var(--color-neutral-800)', 'var(--color-neutral-200)', 'ph-clock'],
+      '—': ['transparent', 'var(--color-neutral-500)', 'ph-minus']
+    };
+    const S = {
+      rascunho: ['transparent', 'var(--color-neutral-300)', 'inset 0 0 0 1px var(--color-neutral-700)'],
+      confirmada: ['var(--color-accent-800)', 'var(--color-accent-100)', 'none'],
+      cancelada: ['transparent', 'var(--color-neutral-500)', 'inset 0 0 0 1px var(--color-neutral-800)']
+    };
+    const short = { 'Santa Cruz do Rio Pardo': 'Santa Cruz', 'Bernardino de Campos': 'Bernardino' };
+    const rows = [
+      ['V-0031', '04/10/2026', 'Pizzaria Bella Massa', 'João', 'Chavantes', '2 placas, otimização', '500,00', '432,25', '86%', 'pendente', 'rascunho'],
+      ['V-0030', '30/09/2026', 'Pousada Rio Pardo', 'Nathan', 'Santa Cruz do Rio Pardo', '5 placas, otimização', '750,40', '613,46', '82%', 'pendente', 'confirmada'],
+      ['V-0029', '28/09/2026', 'Barbearia Navalha de Ouro', 'João', 'Ourinhos', '2 placas', '179,80', '137,00', '76%', 'pago', 'confirmada'],
+      ['V-0028', '26/09/2026', 'Salão Studio Bela', 'Nathan', 'Ourinhos', '1 placa', '89,90', '68,50', '76%', 'pago', 'confirmada'],
+      ['V-0027', '22/09/2026', 'Padaria Pão Nosso', 'João', 'Santa Cruz do Rio Pardo', '1 placa', '89,90', '—', '—', '—', 'cancelada'],
+      ['V-0026', '18/09/2026', 'Auto Elétrica Faísca', 'João', 'Ourinhos', '1 placa, site', '1.589,90', '1.448,50', '91%', 'pago', 'confirmada'],
+      ['V-0025', '14/09/2026', 'Lanchonete Ponto Certo', 'Nathan', 'Bernardino de Campos', '3 placas', '269,70', '205,50', '76%', 'pago', 'confirmada'],
+      ['V-0024', '11/09/2026', 'Clínica Vet Patas', 'Nathan', 'Chavantes', '1 placa, otimização', '439,90', '411,52', '94%', 'pendente', 'confirmada'],
+      ['V-0023', '09/09/2026', 'Floricultura Jardim', 'João', 'Ipaussu', '1 placa', '89,90', '68,50', '76%', 'pago', 'confirmada'],
+      ['V-0022', '05/09/2026', 'Açougue Boi Gordo', 'João', 'Santa Cruz do Rio Pardo', '2 placas', '179,80', '137,00', '76%', 'pago', 'confirmada'],
+      ['V-0021', '03/09/2026', 'Mercearia São José', 'Nathan', 'Ourinhos', 'otimização, site', '1.750,00', '1.542,67', '88%', 'parcial', 'confirmada']
+    ];
+    const sales = rows.map(([code, date, client, seller, city, items, total, profit, margin, pay, status]) => ({
+      code, date, client, seller, city, cityShort: short[city] || city, items, total: 'R$ ' + total,
+      profit: profit === '—' ? '—' : 'R$ ' + profit, margin, pay,
+      payBg: P[pay][0], payFg: P[pay][1], payIcon: P[pay][2], status,
+      stBg: S[status][0], stFg: S[status][1], stRing: S[status][2],
+      strike: status === 'cancelada' ? 'line-through' : 'none', op: status === 'cancelada' ? 0.6 : 1
+    }));
+    return { sales, salesM: sales.slice(0, 6) };
+  }
+}
+</script>
+</body>
+</html>

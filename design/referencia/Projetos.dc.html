@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/styles.css">
+<script src="_ds/nocturne-5c80c99b-4a3c-4dee-9f25-511d40b9aaed/_ds_bundle.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>html{background:var(--color-neutral-900)}body{margin:0;background:var(--color-neutral-900);font-variant-numeric:tabular-nums}a{color:var(--color-accent-300)}a:hover{color:var(--color-accent-200)}</style>
+</helmet>
+<section style="padding:48px 56px 96px;display:flex;flex-direction:column;gap:32px">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap">
+      <h2 style="margin:0;font-size:28px">Projetos</h2>
+      <span style="color:var(--color-neutral-400);font-size:14px">colunas por status no desktop; abas no celular</span>
+    </div>
+    <nav style="display:flex;gap:16px;font-size:13px;flex-wrap:wrap"><a href="Painel.dc.html">Painel</a><a href="Prospeccao.dc.html">Prospecção</a><a href="Vendas.dc.html">Vendas</a><a href="Nova venda.dc.html">Nova venda</a><a href="Projetos.dc.html" style="color:var(--color-text)">Projetos</a><a href="Projeto.dc.html">Projeto</a><a href="Estoque.dc.html">Estoque</a><a href="Financeiro.dc.html">Financeiro</a><a href="Tema claro.dc.html">Tema claro</a></nav>
+  </header>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
+    <div id="9a" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--color-accent);color:var(--color-accent)">9a</span><span style="font-size:14px;color:var(--color-neutral-300)">Desktop</span></div>
+      <div style="width:1440px;height:900px;border-radius:14px;overflow:hidden;display:flex;background:var(--color-bg);box-shadow:var(--shadow-md)">
+        <dc-import name="Sidebar" active="Projetos" hint-size="232px,900px"></dc-import>
+        <main style="flex:1;min-width:0;display:flex;flex-direction:column;padding:26px 28px 0;gap:20px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="display:flex;flex-direction:column;gap:2px;margin-right:auto"><h1 style="margin:0;font-size:26px">Projetos</h1><span style="font-size:13px;color:var(--color-neutral-500)">7 em aberto · 2 com prazo vencido · 8 upsells em aberto</span></div>
+            <div class="seg"><label class="seg-opt"><input type="radio" name="r" checked="">Todos</label><label class="seg-opt"><input type="radio" name="r">João</label><label class="seg-opt"><input type="radio" name="r">Nathan</label></div>
+            <button class="btn btn-secondary"><i class="ph ph-funnel-simple"></i>Só com upsell em aberto</button>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;overflow:hidden">
+            <sc-for list="{{ columns }}" as="col" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                <div style="display:flex;align-items:center;gap:8px;padding:4px 2px 6px;font-size:13px"><i class="ph {{ col.icon }}" style="font-size:16px;color:{{ col.color }}"></i><span style="font-weight:500">{{ col.name }}</span><span style="color:var(--color-neutral-500)">{{ col.count }}</span></div>
+                <sc-for list="{{ col.cards }}" as="c" hint-placeholder-count="2">
+                  <a href="Projeto.dc.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:8px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:14px;font-weight:500">{{ c.client }}</span><span style="font-size:12px;color:var(--color-neutral-500)">{{ c.code }}</span></div>
+                    <span style="font-size:12px;color:var(--color-neutral-300)">{{ c.items }}</span>
+                    <sc-if value="{{ c.note }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--color-neutral-400)"><i class="ph ph-hourglass-medium"></i> {{ c.note }}</span></sc-if>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:2px 8px;border-radius:6px;background:{{ c.dueBg }};color:{{ c.dueFg }}"><i class="ph {{ c.dueIcon }}"></i>{{ c.due }}</span>
+                      <span style="margin-left:auto;font-size:12px;color:var(--color-neutral-500)">{{ c.progress }}</span>
+                    </div>
+                    <sc-if value="{{ c.upsell }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:2px 8px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--color-accent-700);color:var(--color-accent-300)"><i class="ph ph-arrow-up-right"></i>{{ c.upsell }}</span></sc-if>
+                  </a>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="9b" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--color-accent);color:var(--color-accent)">9b</span><span style="font-size:14px;color:var(--color-neutral-300)">Celular · aba Em andamento</span></div>
+      <div style="width:390px;height:844px;border-radius:44px;background:var(--color-bg);box-shadow:var(--shadow-md);position:relative;overflow:hidden;display:flex;flex-direction:column">
+        <div style="height:46px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font-size:14px;font-weight:600"><span>9:41</span><span style="display:flex;gap:5px"><i class="ph-fill ph-cell-signal-full"></i><i class="ph-fill ph-wifi-high"></i><i class="ph-fill ph-battery-full"></i></span></div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;padding:6px 16px 0;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between"><h1 style="margin:0;font-size:24px">Projetos</h1><span style="font-size:13px;color:var(--color-neutral-500)">2 vencidos</span></div>
+          <div style="display:flex;gap:6px;overflow:hidden;margin-right:-16px">
+            <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+              <span style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:18px;font-size:13px;white-space:nowrap;border:1px solid {{ t.border }};color:{{ t.color }}">{{ t.label }}<span style="color:var(--color-neutral-500)">{{ t.count }}</span></span>
+            </sc-for>
+          </div>
+          <sc-for list="{{ mobile }}" as="c" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:10px;background:var(--color-surface);box-shadow:var(--shadow-sm)">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:500">{{ c.client }}</span><span style="font-size:12px;color:var(--color-neutral-500)">{{ c.code }}</span></div>
+              <span style="font-size:13px;color:var(--color-neutral-300)">{{ c.items }}</span>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 8px;border-radius:6px;background:{{ c.dueBg }};color:{{ c.dueFg }}"><i class="ph {{ c.dueIcon }}"></i>{{ c.due }}</span>
+                <span style="margin-left:auto;font-size:12px;color:var(--color-neutral-500)">{{ c.progress }}</span>
+              </div>
+              <sc-if value="{{ c.upsell }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 8px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--color-accent-700);color:var(--color-accent-300)"><i class="ph ph-arrow-up-right"></i>{{ c.upsell }}</span></sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <dc-import name="TabBar" active="Projetos" hint-size="390px,82px"></dc-import>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const D = {
+      late: ['oklch(0.3 0.06 25)', 'oklch(0.86 0.08 25)', 'ph-warning-circle'],
+      soon: ['oklch(0.31 0.05 60)', 'oklch(0.87 0.07 60)', 'ph-clock'],
+      ok: ['var(--color-neutral-900)', 'var(--color-neutral-300)', 'ph-calendar-blank'],
+      done: ['oklch(0.3 0.045 160)', 'oklch(0.86 0.07 160)', 'ph-check-circle']
+    };
+    const c = (client, code, items, due, kind, progress, upsell, note) => ({ client, code, items, due, progress, upsell: upsell || null, note: note || null, dueBg: D[kind][0], dueFg: D[kind][1], dueIcon: D[kind][2] });
+    const cols = [
+      ['A entregar', 'ph-circle-dashed', 'var(--color-neutral-400)', [
+        c('Barbearia Navalha de Ouro', 'V-0029', '2 placas', 'prazo 05/10/2026 · amanhã', 'soon', '1 de 4', 'upsell: otimização'),
+        c('Pousada Rio Pardo', 'V-0030', '5 placas, otimização', 'prazo 10/10/2026', 'ok', '0 de 9', 'upsell: site')]],
+      ['Em andamento', 'ph-circle-half', 'var(--color-accent)', [
+        c('Restaurante Sabor Caseiro', 'V-0012', '2 placas, otimização', 'venceu 30/09/2026 · 4 dias', 'late', '7 de 9', 'upsell: site'),
+        c('Auto Elétrica Faísca', 'V-0026', '1 placa, site', 'prazo 18/10/2026', 'ok', '6 de 10', 'upsell: otimização'),
+        c('Mercearia São José', 'V-0021', 'otimização, site', 'prazo 20/10/2026', 'ok', '4 de 11')]],
+      ['Aguardando cliente', 'ph-hourglass-medium', 'oklch(0.87 0.07 60)', [
+        c('Clínica Vet Patas', 'V-0024', '1 placa, otimização', 'venceu 25/09/2026 · 9 dias', 'late', '5 de 9', 'upsell: site', 'fotos do consultório desde 18/09'),
+        c('Lanchonete Ponto Certo', 'V-0025', '3 placas', 'prazo 06/10/2026', 'soon', '2 de 4', 'upsell: otimização', 'horário para instalar')]],
+      ['Entregue', 'ph-check-circle', 'oklch(0.75 0.09 160)', [
+        c('Padaria Pão Nosso', 'V-0003', '1 placa, otimização', 'entregue 10/09/2026', 'done', '9 de 9', 'site em negociação'),
+        c('Salão Studio Bela', 'V-0028', '1 placa', 'entregue 27/09/2026', 'done', '4 de 4', 'upsell: otimização'),
+        c('Floricultura Jardim', 'V-0023', '1 placa', 'entregue 10/09/2026', 'done', '4 de 4'),
+        c('Açougue Boi Gordo', 'V-0022', '2 placas', 'entregue 07/09/2026', 'done', '4 de 4')]]
+    ];
+    const on = (b) => b ? { border: 'var(--color-accent)', color: 'var(--color-accent)' } : { border: 'var(--color-divider)', color: 'var(--color-text)' };
+    return {
+      columns: cols.map(([name, icon, color, cards]) => ({ name, icon, color, cards, count: cards.length })),
+      tabs: cols.map(([name, , , cards]) => ({ label: name, count: cards.length, ...on(name === 'Em andamento') })),
+      mobile: cols[1][3]
+    };
+  }
+}
+</script>
+</body>
+</html>

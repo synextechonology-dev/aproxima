@@ -1,0 +1,69 @@
+import { lazy, Suspense, type ReactNode } from 'react';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, Link } from 'react-router-dom';
+import { MapTrifold } from '@phosphor-icons/react';
+import { useAuth } from './auth-contexto';
+import { Casca } from './Casca';
+import { Carregando, Vazio } from '@/components/estados';
+import { estiloBotao } from '@/components/ui/botao-estilo';
+
+const PaginaLogin = lazy(() => import('@/features/login/PaginaLogin'));
+const EmConstrucao = lazy(() => import('./EmConstrucao'));
+
+function Protegido({ children }: { children: ReactNode }) {
+  const { estado } = useAuth();
+  const local = useLocation();
+  if (estado === 'carregando') {
+    return (
+      <main className="flex min-h-dvh items-center justify-center">
+        <Carregando linhas={2} className="w-64" />
+      </main>
+    );
+  }
+  if (estado !== 'pronto') return <Navigate to="/login" replace state={{ de: local.pathname + local.search }} />;
+  return <>{children}</>;
+}
+
+function NaoEncontrada() {
+  return (
+    <Vazio
+      icone={MapTrifold}
+      titulo="Página não encontrada"
+      texto="O endereço não existe ou mudou."
+      acao={
+        <Link to="/" className={estiloBotao({ variante: 'principal' })}>
+          Ir para o Painel
+        </Link>
+      }
+    />
+  );
+}
+
+const carregandoPagina = <Carregando linhas={5} />;
+
+export function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={carregandoPagina}>
+        <Routes>
+          <Route path="/login" element={<PaginaLogin />} />
+          <Route
+            element={
+              <Protegido>
+                <Casca />
+              </Protegido>
+            }
+          >
+            <Route index element={<EmConstrucao area="Painel" />} />
+            <Route path="prospeccao" element={<EmConstrucao area="Prospecção" />} />
+            <Route path="vendas/*" element={<EmConstrucao area="Vendas" />} />
+            <Route path="projetos/*" element={<EmConstrucao area="Projetos" />} />
+            <Route path="estoque" element={<EmConstrucao area="Estoque" />} />
+            <Route path="financeiro" element={<EmConstrucao area="Financeiro" />} />
+            <Route path="configuracoes" element={<EmConstrucao area="Configurações" />} />
+            <Route path="*" element={<NaoEncontrada />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
