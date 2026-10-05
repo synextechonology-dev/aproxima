@@ -1,11 +1,10 @@
 # Relatório de construção do Aproxima
 
-Data: 05/10/2026 · Branch: `claude/sharp-knuth-fosw8r` · Pasta do app: `aproxima/`
+Data: 05/10/2026 · Repositório: `synextechonology-dev/aproxima` (app na raiz)
 
 ## Como rodar localmente
 
 ```bash
-cd aproxima
 npm install
 npm run dev          # abre em http://localhost:5173
 ```
@@ -94,10 +93,9 @@ têm mensagens próprias.
 
 ## Dúvidas e decisões anotadas
 
-1. **Pasta e `git init`.** O repositório `synex` já tinha um esqueleto Next.js de outro projeto (JOHN STORE) na raiz.
-   Para não apagar nada, o Aproxima ficou em `aproxima/`, e não rodei `git init` (a pasta já está num repositório;
-   um repositório aninhado não iria para o GitHub). **Na Vercel, configure Root Directory = `aproxima`.** O
-   `vercel.json` e o `api/` continuam funcionando a partir dessa pasta, sem mudanças.
+1. **Repositório.** O app foi construído primeiro dentro do repositório `synex` (pasta `aproxima/`), porque ele já
+   tinha outro projeto na raiz. Depois foi movido, com o histórico das etapas, para este repositório, onde fica na
+   raiz. Na Vercel, não é preciso configurar Root Directory. O `vercel.json` e o `api/` estão iguais aos originais.
 2. **Registrar lote.** O esboço mostra custo por placa e "nova média" antes de salvar. Isso seria recalcular custo no
    front, o que a instrução proíbe; o app avisa que o banco calcula e mostra o custo por placa devolvido pela RPC.
 3. **Nova venda.** O esboço mostra "3x de R$ 166,67" e custo "2 × R$ 21,40". As parcelas são geradas pelo banco na
