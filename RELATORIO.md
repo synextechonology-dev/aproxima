@@ -7,6 +7,15 @@ Data: 05/10/2026 · Repositório: `synextechonology-dev/aproxima` (app na raiz)
 > pelo banco (só quem está em `membros` acessa). **Antes de publicar para uso real, mude para `true`**, faça o build
 > de novo e habilite o TOTP em Supabase → Authentication → Multi-Factor.
 
+> **Atenção (temporário): acesso de teste sem login.** Quando a Vercel tem `VITE_ACESSO_TESTE_EMAIL` e
+> `VITE_ACESSO_TESTE_SENHA`, o app entra sozinho na conta `acesso-teste@aproxima.app` (sócia "Acesso de teste" em
+> `membros`) e não mostra a tela de login. **Qualquer pessoa com o link entra e vê os dados.** Enquanto ela estiver
+> ativa, a divisão 50/50 das retiradas conta 2 sócios ativos (João e Acesso de teste). Para proteger o app:
+> 1. apague as duas variáveis na Vercel e faça um novo deploy (o login volta);
+> 2. no SQL Editor: `update public.membros set ativo = false where nome = 'Acesso de teste';` e apague o usuário
+>    `acesso-teste@aproxima.app` em Authentication → Users;
+> 3. religue o código de verificação (`EXIGIR_MFA = true` em `src/app/seguranca.ts`).
+
 ## Como rodar localmente
 
 ```bash

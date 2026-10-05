@@ -7,6 +7,7 @@ import { NAV_CELULAR, NAV_CONFIG, NAV_MAIS, NAV_PRINCIPAL, type ItemNav } from '
 import { BuscaGlobal } from './BuscaGlobal';
 import { AlternarTema } from '@/components/AlternarTema';
 import { LimiteDeErro } from '@/components/LimiteDeErro';
+import { ACESSO_TESTE } from './seguranca';
 import { Lateral } from '@/components/ui/dialogo';
 import { supabase } from '@/lib/supabase';
 import { cn } from '@/lib/utils';
@@ -82,6 +83,11 @@ function BarraLateral({ abrirBusca }: { abrirBusca: () => void }) {
             {membro?.nome.slice(0, 1).toUpperCase()}
           </span>
           <div className="flex min-w-0 flex-1 flex-col">
+        {ACESSO_TESTE ? (
+          <p role="status" className="bg-hoje-bg px-4 py-1 text-center text-xs text-hoje-fg">
+            Acesso de teste, sem login. Qualquer pessoa com o link entra: não cadastre dados reais de clientes ainda.
+          </p>
+        ) : null}
             <span className="truncate text-md">{membro?.nome}</span>
             <span className="text-xs text-text-muted">{membro?.papel === 'admin' ? 'administrador' : 'sócio'}</span>
           </div>
