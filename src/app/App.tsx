@@ -8,6 +8,7 @@ import { estiloBotao } from '@/components/ui/botao-estilo';
 
 const PaginaLogin = lazy(() => import('@/features/login/PaginaLogin'));
 const EmConstrucao = lazy(() => import('./EmConstrucao'));
+const PaginaEstoque = lazy(() => import('@/features/estoque/PaginaEstoque'));
 const PaginaProspeccao = lazy(() => import('@/features/prospeccao/PaginaProspeccao'));
 
 function Protegido({ children }: { children: ReactNode }) {
@@ -58,7 +59,7 @@ export function App() {
             <Route path="prospeccao" element={<PaginaProspeccao />} />
             <Route path="vendas/*" element={<EmConstrucao area="Vendas" />} />
             <Route path="projetos/*" element={<EmConstrucao area="Projetos" />} />
-            <Route path="estoque" element={<EmConstrucao area="Estoque" />} />
+            <Route path="estoque" element={<PaginaEstoque />} />
             <Route path="financeiro" element={<EmConstrucao area="Financeiro" />} />
             <Route path="configuracoes" element={<EmConstrucao area="Configurações" />} />
             <Route path="*" element={<NaoEncontrada />} />
