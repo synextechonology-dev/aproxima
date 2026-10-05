@@ -15,6 +15,7 @@ const EditorVenda = lazy(() => import('@/features/vendas/EditorVenda'));
 const PaginaProjetos = lazy(() => import('@/features/projetos/PaginaProjetos'));
 const PaginaProjeto = lazy(() => import('@/features/projetos/PaginaProjeto'));
 const PaginaFinanceiro = lazy(() => import('@/features/financeiro/PaginaFinanceiro'));
+const PaginaPainel = lazy(() => import('@/features/painel/PaginaPainel'));
 const PaginaProspeccao = lazy(() => import('@/features/prospeccao/PaginaProspeccao'));
 
 function Protegido({ children }: { children: ReactNode }) {
@@ -61,7 +62,7 @@ export function App() {
               </Protegido>
             }
           >
-            <Route index element={<EmConstrucao area="Painel" />} />
+            <Route index element={<PaginaPainel />} />
             <Route path="prospeccao" element={<PaginaProspeccao />} />
             <Route path="vendas" element={<PaginaVendas />} />
             <Route path="vendas/nova" element={<NovaVenda />} />
