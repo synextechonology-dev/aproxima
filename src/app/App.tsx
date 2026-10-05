@@ -7,7 +7,7 @@ import { Carregando, Vazio } from '@/components/estados';
 import { estiloBotao } from '@/components/ui/botao-estilo';
 
 const PaginaLogin = lazy(() => import('@/features/login/PaginaLogin'));
-const EmConstrucao = lazy(() => import('./EmConstrucao'));
+const PaginaConfiguracoes = lazy(() => import('@/features/configuracoes/PaginaConfiguracoes'));
 const PaginaEstoque = lazy(() => import('@/features/estoque/PaginaEstoque'));
 const PaginaVendas = lazy(() => import('@/features/vendas/PaginaVendas'));
 const NovaVenda = lazy(() => import('@/features/vendas/NovaVenda'));
@@ -71,7 +71,7 @@ export function App() {
             <Route path="projetos/:id" element={<PaginaProjeto />} />
             <Route path="estoque" element={<PaginaEstoque />} />
             <Route path="financeiro" element={<PaginaFinanceiro />} />
-            <Route path="configuracoes" element={<EmConstrucao area="Configurações" />} />
+            <Route path="configuracoes" element={<PaginaConfiguracoes />} />
             <Route path="*" element={<NaoEncontrada />} />
           </Route>
         </Routes>
