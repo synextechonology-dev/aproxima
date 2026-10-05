@@ -133,3 +133,10 @@ export function agoraLocalSP(): string {
 export function localSPparaISO(v: string): string {
   return `${v}:00-03:00`;
 }
+
+const decimal2 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+/** Taxa percentual com até 2 casas (4,99%). */
+export function formatarTaxa(v: number | string | null | undefined, vazio = '—'): string {
+  const n = num(v);
+  return n === null ? vazio : `${decimal2.format(n)}%`;
+}

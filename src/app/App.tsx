@@ -9,6 +9,9 @@ import { estiloBotao } from '@/components/ui/botao-estilo';
 const PaginaLogin = lazy(() => import('@/features/login/PaginaLogin'));
 const EmConstrucao = lazy(() => import('./EmConstrucao'));
 const PaginaEstoque = lazy(() => import('@/features/estoque/PaginaEstoque'));
+const PaginaVendas = lazy(() => import('@/features/vendas/PaginaVendas'));
+const NovaVenda = lazy(() => import('@/features/vendas/NovaVenda'));
+const EditorVenda = lazy(() => import('@/features/vendas/EditorVenda'));
 const PaginaProspeccao = lazy(() => import('@/features/prospeccao/PaginaProspeccao'));
 
 function Protegido({ children }: { children: ReactNode }) {
@@ -57,7 +60,9 @@ export function App() {
           >
             <Route index element={<EmConstrucao area="Painel" />} />
             <Route path="prospeccao" element={<PaginaProspeccao />} />
-            <Route path="vendas/*" element={<EmConstrucao area="Vendas" />} />
+            <Route path="vendas" element={<PaginaVendas />} />
+            <Route path="vendas/nova" element={<NovaVenda />} />
+            <Route path="vendas/:id" element={<EditorVenda />} />
             <Route path="projetos/*" element={<EmConstrucao area="Projetos" />} />
             <Route path="estoque" element={<PaginaEstoque />} />
             <Route path="financeiro" element={<EmConstrucao area="Financeiro" />} />
