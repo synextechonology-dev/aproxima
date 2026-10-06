@@ -59,7 +59,7 @@ function BarraLateral({ abrirBusca }: { abrirBusca: () => void }) {
     <aside className="sticky top-0 hidden h-dvh w-[232px] shrink-0 flex-col gap-4 border-r border-divider px-3 py-6 md:flex">
       <div className="flex items-center gap-2 px-3">
         <img src="/icone.svg" alt="" className="size-[28px]" />
-        <span className="text-lg font-medium">Aproxima</span>
+        <span className="text-lg font-medium">Notavo</span>
       </div>
       <button
         type="button"
@@ -191,7 +191,7 @@ export function Casca() {
         {/* Topo do celular: marca + busca */}
         <div className="sticky top-0 z-20 flex items-center gap-2 border-b border-divider bg-bg px-4 py-1 md:hidden">
           <img src="/icone.svg" alt="" className="size-[24px]" />
-          <span className="flex-1 font-medium">Aproxima</span>
+          <span className="flex-1 font-medium">Notavo</span>
           <button
             type="button"
             onClick={() => setBusca(true)}

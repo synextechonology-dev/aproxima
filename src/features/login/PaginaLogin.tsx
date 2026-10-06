@@ -27,7 +27,7 @@ function Moldura({ titulo, texto, children }: { titulo: string; texto?: string; 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img src="/icone.svg" alt="" className="size-[32px]" />
-            <span className="text-lg font-medium">Aproxima</span>
+            <span className="text-lg font-medium">Notavo</span>
           </div>
           <AlternarTema />
         </div>
@@ -103,7 +103,7 @@ function FormCodigo() {
     await reavaliar();
   });
   return (
-    <Moldura titulo="Código de verificação" texto="Abra o app autenticador e digite o código de 6 números do Aproxima.">
+    <Moldura titulo="Código de verificação" texto="Abra o app autenticador e digite o código de 6 números do Notavo.">
       <form onSubmit={verificar} className="flex flex-col gap-4" noValidate>
         <Campo rotulo="Código" erro={f.formState.errors.codigo?.message}>
           <Entrada inputMode="numeric" autoComplete="one-time-code" maxLength={6} autoFocus className="num text-center text-xl tracking-[0.4em]" {...f.register('codigo')} />
@@ -136,7 +136,7 @@ function CadastroMfa() {
       for (const x of lista.data?.all ?? []) {
         if (x.status === 'unverified') await supabase.auth.mfa.unenroll({ factorId: x.id });
       }
-      const { data, error } = await supabase.auth.mfa.enroll({ factorType: 'totp', friendlyName: `Aproxima ${Date.now()}` });
+      const { data, error } = await supabase.auth.mfa.enroll({ factorType: 'totp', friendlyName: `Notavo ${Date.now()}` });
       if (!ativo) return;
       if (error) setErro(mensagemDeErro(error));
       else setFator({ id: data.id, qr: data.totp.qr_code, segredo: data.totp.secret });
@@ -191,7 +191,7 @@ function CadastroMfa() {
 function SemAcesso() {
   const { sair, sessao } = useAuth();
   return (
-    <Moldura titulo="Sem acesso" texto={`A conta ${sessao?.user.email ?? ''} entrou, mas não está cadastrada como sócia do Aproxima. Peça para o administrador incluir você.`}>
+    <Moldura titulo="Sem acesso" texto={`A conta ${sessao?.user.email ?? ''} entrou, mas não está cadastrada como sócia do Notavo. Peça para o administrador incluir você.`}>
       <Botao variante="principal" tamanho="bloco" onClick={() => void sair()}>
         <SignOut size={18} aria-hidden />
         Sair

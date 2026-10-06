@@ -5,7 +5,7 @@ import type { DadosProjeto } from './dados';
 export function textoResultado(d: DadosProjeto): string {
   const r = d.resultado;
   const nome = d.cliente.contato_nome || d.cliente.nome;
-  const linhas = [`Olá, ${nome}! Aqui está o resultado do seu perfil no Google desde a placa Aproxima (${formatarData(d.venda.data_venda)}):`];
+  const linhas = [`Olá, ${nome}! Aqui está o resultado do seu perfil no Google desde a placa Notavo (${formatarData(d.venda.data_venda)}):`];
   if (r?.avaliacoes_atuais !== null && r?.avaliacoes_atuais !== undefined) {
     linhas.push(
       `• Avaliações: ${formatarNumero(r.baseline_avaliacoes)} → ${formatarNumero(r.avaliacoes_atuais)}${r.avaliacoes_ganhas !== null ? ` (+${formatarNumero(r.avaliacoes_ganhas)})` : ''}`,

@@ -117,7 +117,7 @@ function ImportarCsvAberto({ aberto, aoMudar }: { aberto: boolean; aoMudar: (v: 
               <FileCsv size={18} aria-hidden />
               {arquivo ? 'Escolher outro arquivo' : 'Escolher arquivo CSV'}
             </Botao>
-            <Botao onClick={() => baixarCsv('modelo-leads-aproxima.csv', [], [...COLUNAS_IMPORTACAO])}>
+            <Botao onClick={() => baixarCsv('modelo-leads-notavo.csv', [], [...COLUNAS_IMPORTACAO])}>
               <DownloadSimple size={18} aria-hidden />
               Baixar modelo
             </Botao>

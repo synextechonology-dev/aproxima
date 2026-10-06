@@ -107,7 +107,7 @@ function LinhaDescartado({ c, aoAbrir }: { c: Cliente; aoAbrir: () => void }) {
 
 function exportar(leads: Cliente[], nome: (id: string | null) => string) {
   baixarCsv(
-    `leads-aproxima-${hojeSP()}.csv`,
+    `leads-notavo-${hojeSP()}.csv`,
     leads.map((c) => ({
       codigo: c.codigo,
       nome: c.nome,
